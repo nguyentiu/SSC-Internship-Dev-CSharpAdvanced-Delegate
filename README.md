@@ -172,3 +172,9 @@ class Program
 }
 ```
 Trong ví dụ này, phương thức `SortArray` sử dụng một delegate để xác định thứ tự sắp xếp. Điều này cho phép bạn truyền vào logic so sánh khác nhau, như sắp xếp tăng dần hay giảm dần, mà không cần thay đổi bản thân phương thức `SortArray`.
+
+## 6. Nguồn tham khảo
+- https://viblo.asia/p/tim-hieu-ve-delegate-trong-c-aNj4vQzxV6r
+- https://www.tutorialsteacher.com/csharp/csharp-func-delegate
+- https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
+- https://www.geeksforgeeks.org/c-sharp-delegates/
