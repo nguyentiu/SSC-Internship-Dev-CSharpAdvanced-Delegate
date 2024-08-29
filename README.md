@@ -1,5 +1,5 @@
 # SSC-Internship-Dev-CSharpAdvanced-Delegate
-# Hướng Dẫn Về Generics trong C#
+# Hướng Dẫn Về Delegate trong C#
 ## 1. Delegate là gì?
 Delegate trong C# là một kiểu dữ liệu đặc biệt, đại diện cho tham chiếu tới các phương thức. Bạn có thể hình dung delegate giống như một con trỏ trỏ tới hàm, cho phép bạn truyền phương thức như một tham số, lưu trữ chúng trong biến và gọi chúng một cách động. Delegate giúp mã nguồn trở nên linh hoạt hơn, đặc biệt là khi kết hợp với các mẫu thiết kế lập trình khác.
 
@@ -178,3 +178,95 @@ Trong ví dụ này, phương thức `SortArray` sử dụng một delegate đ�
 - https://www.tutorialsteacher.com/csharp/csharp-func-delegate
 - https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/
 - https://www.geeksforgeeks.org/c-sharp-delegates/
+
+# Hướng Dẫn Sử Dụng Action, Predicate, và Func trong C#
+## 1. Giới Thiệu
+Sau khi tìm hiểu về delegate, chúng ta sẽ tiếp tục tìm hiểu về ba delegate quan trọng trong C#: `Action`, `Predicate`, và `Func`.
+- Action: Delegate dùng để tham chiếu tới các phương thức không trả về giá trị (`void`).
+- Predicate: Delegate dùng để tham chiếu tới các phương thức trả về giá trị `bool`.
+- Func: Delegate dùng để tham chiếu tới các phương thức có thể trả về một giá trị, với kiểu trả về và kiểu tham số được chỉ định.
+## 2. Action
+### 2.1. Khái Niệm
+`Action` là một delegate có sẵn trong .NET, dùng để tham chiếu tới các phương thức không trả về giá trị (`void`). Action có thể nhận tối đa 16 tham số. Đây là một lựa chọn tuyệt vời khi bạn cần thực hiện một hành động nào đó mà không cần nhận kết quả trả về.
+
+### 2.2. Ví Dụ
+Dưới đây là một ví dụ sử dụng `Action` để in thông điệp ra màn hình:
+
+```csharp
+ 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Khai báo một Action không có tham số
+        Action printMessage = () => Console.WriteLine("Hello, this is an Action delegate!");
+        
+        // Gọi Action
+        printMessage(); // Output: Hello, this is an Action delegate!
+
+        // Khai báo một Action với tham số
+        Action<string> printCustomMessage = message => Console.WriteLine(message);
+        
+        // Gọi Action với tham số
+        printCustomMessage("Hello, this is a custom message!"); // Output: Hello, this is a custom message!
+    }
+}
+```
+Trong ví dụ này, chúng ta đã sử dụng `Action` để tham chiếu tới một phương thức in thông điệp ra màn hình. `Action` có thể không có tham số hoặc có tham số tùy vào yêu cầu của bạn.
+
+## 3. Predicate
+### 3.1. Khái Niệm
+`Predicate` là một delegate chuyên biệt hơn, dùng để tham chiếu tới các phương thức trả về giá trị `bool`. Thường được sử dụng để kiểm tra điều kiện hoặc thực hiện các phép so sánh, lọc dữ liệu.
+
+### 3.2. Ví Dụ
+Dưới đây là một ví dụ sử dụng `Predicate` để kiểm tra xem một số có phải là số chẵn hay không:
+
+```csharp
+ 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Khai báo một Predicate với tham số kiểu int
+        Predicate<int> isEven = number => number % 2 == 0;
+        
+        // Kiểm tra số chẵn
+        bool result = isEven(10);
+        Console.WriteLine("Is 10 even? " + result); // Output: Is 10 even? True
+
+        result = isEven(5);
+        Console.WriteLine("Is 5 even? " + result); // Output: Is 5 even? False
+    }
+}
+```
+Trong ví dụ này, `Predicate<int>` được sử dụng để kiểm tra xem số có phải là số chẵn hay không. `Predicate` rất hữu ích trong các tình huống cần lọc hoặc xác thực dữ liệu.
+
+# 4. Func
+## 4.1. Khái Niệm
+`Func` là một delegate mạnh mẽ hơn, có thể trả về một giá trị. `Func` cho phép bạn chỉ định kiểu trả về cùng với tối đa 16 tham số đầu vào. Đây là delegate linh hoạt nhất trong ba loại chúng ta đang tìm hiểu.
+
+## 4.2. Ví Dụ
+Dưới đây là một ví dụ sử dụng `Func` để tính tổng của hai số nguyên:
+
+```csharp
+ 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Khai báo một Func với hai tham số int và kiểu trả về int
+        Func<int, int, int> sum = (a, b) => a + b;
+        
+        // Tính tổng hai số
+        int result = sum(5, 10);
+        Console.WriteLine("Sum of 5 and 10 is: " + result); // Output: Sum of 5 and 10 is: 15
+    }
+}
+```
+Trong ví dụ này, `Func<int, int, int>` được sử dụng để tham chiếu tới một phương thức nhận vào hai số nguyên và trả về tổng của chúng. `Func` có thể được sử dụng trong nhiều ngữ cảnh khác nhau khi bạn cần trả về một giá trị.
