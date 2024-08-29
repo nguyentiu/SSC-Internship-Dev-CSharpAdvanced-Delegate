@@ -270,3 +270,8 @@ class Program
 }
 ```
 Trong ví dụ này, `Func<int, int, int>` được sử dụng để tham chiếu tới một phương thức nhận vào hai số nguyên và trả về tổng của chúng. `Func` có thể được sử dụng trong nhiều ngữ cảnh khác nhau khi bạn cần trả về một giá trị.
+
+# 5. Tổng kết
+- `Action`: Sử dụng khi cần thực hiện một hành động mà không quan tâm đến giá trị trả về.
+- `Predicate`: Sử dụng khi cần kiểm tra điều kiện và trả về giá trị `bool`.
+- `Func`: Sử dụng khi cần thực hiện một hành động và trả về một giá trị.
